@@ -2,7 +2,7 @@
 
 Some examples for how to build dart code from another dart code using `package:analyzer` and `package:code_builder` only (i.e. no `build_runner` or `build.yaml` files). 
 
-In the `example` folder, there are three different stand-alone examples. Each one of them can be simply ran as follow:
+In the `example` folder, there are three different stand-alone examples. Each one of them can be simply executed as follow:
 
 ```sh
 [~/path/to/repo] dart run example/<file_name>.dart
@@ -25,11 +25,11 @@ In the `example` folder, there are three different stand-alone examples. Each on
     - In short, it takes this as an input:
     ```dart
     class Person  { 
-    final String name;
-    final String? nickname;
-    final int age;
-    final double height;
-    final List<String> hobbies;
+        final String name;
+        final String? nickname;
+        final int age;
+        final double height;
+        final List<String> hobbies;
     }
     ```
 
@@ -38,84 +38,84 @@ In the `example` folder, there are three different stand-alone examples. Each on
 
     ```dart
     class Person {
-    const Person({
-        required this.name,
-        this.nickname,
-        required this.age,
-        required this.height,
-        required this.hobbies,
-    });
+        const Person({
+            required this.name,
+            this.nickname,
+            required this.age,
+            required this.height,
+            required this.hobbies,
+        });
 
-    factory Person.fromMap(Map<String, dynamic> map) {
-        return Person(
-        name: map['name'],
-        nickname: map['nickname'],
-        age: map['age'].toInt(),
-        height: map['height'].toDouble(),
-        hobbies: List.from(map['hobbies']),
-        );
-    }
-
-    factory Person.fromJson(String source) => Person.fromMap(json.decode(source));
-
-    final String name;
-
-    final String? nickname;
-
-    final int age;
-
-    final double height;
-
-    final List<String> hobbies;
-
-    Person copyWith({
-        String? name,
-        String? nickname,
-        int? age,
-        double? height,
-        List<String>? hobbies,
-    }) {
-        return Person(
-        name: name ?? this.name,
-        nickname: nickname ?? this.nickname,
-        age: age ?? this.age,
-        height: height ?? this.height,
-        hobbies: hobbies ?? this.hobbies,
-        );
-    }
-
-    String toJson() => json.encode(toMap());
-    Map<String, dynamic> toMap() {
-        return {
-        'name': name,
-        'nickname': nickname,
-        'age': age,
-        'height': height,
-        'hobbies': hobbies,
-        };
-    }
-
-    @override
-    String toString() {
-        return 'Person(name: $name, nickname: $nickname, age: $age, height: $height, hobbies: $hobbies)';
-    }
-
-    @override
-    bool operator ==(Object other) {
-        if (identical(this, other)) return true;
-        // TODO: handle list equality here
-        return other is Person &&
-            other.name == name &&
-            other.nickname == nickname &&
-            other.age == age &&
-            other.height == height &&
-            other.hobbies == hobbies;
-    }
-
-    @override
-    int get hashCode {
-        return name.hashCode ^ nickname.hashCode ^ age.hashCode ^ height.hashCode ^ hobbies.hashCode;
+        factory Person.fromMap(Map<String, dynamic> map) {
+            return Person(
+            name: map['name'],
+            nickname: map['nickname'],
+            age: map['age'].toInt(),
+            height: map['height'].toDouble(),
+            hobbies: List.from(map['hobbies']),
+            );
         }
+
+        factory Person.fromJson(String source) => Person.fromMap(json.decode(source));
+
+        final String name;
+
+        final String? nickname;
+
+        final int age;
+
+        final double height;
+
+        final List<String> hobbies;
+
+        Person copyWith({
+            String? name,
+            String? nickname,
+            int? age,
+            double? height,
+            List<String>? hobbies,
+        }) {
+            return Person(
+            name: name ?? this.name,
+            nickname: nickname ?? this.nickname,
+            age: age ?? this.age,
+            height: height ?? this.height,
+            hobbies: hobbies ?? this.hobbies,
+            );
+        }
+
+        String toJson() => json.encode(toMap());
+        Map<String, dynamic> toMap() {
+            return {
+            'name': name,
+            'nickname': nickname,
+            'age': age,
+            'height': height,
+            'hobbies': hobbies,
+            };
+        }
+
+        @override
+        String toString() {
+            return 'Person(name: $name, nickname: $nickname, age: $age, height: $height, hobbies: $hobbies)';
+        }
+
+        @override
+        bool operator ==(Object other) {
+            if (identical(this, other)) return true;
+            // TODO: handle list equality here
+            return other is Person &&
+                other.name == name &&
+                other.nickname == nickname &&
+                other.age == age &&
+                other.height == height &&
+                other.hobbies == hobbies;
+        }
+
+        @override
+        int get hashCode {
+            return name.hashCode ^ nickname.hashCode ^ age.hashCode ^ height.hashCode ^ hobbies.hashCode;
+            }
     }
 
     ```
