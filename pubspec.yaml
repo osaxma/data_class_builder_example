@@ -1,0 +1,19 @@
+name: data_class_builder_example
+description: An Example for using package:analyzer and package:code_builder. 
+version: 0.0.1
+homepage: https://www.github.com/osaxma
+publish_to: none
+
+environment:
+  sdk: '>=2.15.0 <3.0.0'
+
+
+dependencies: 
+  analyzer: ^3.0.0
+  code_builder: ^4.1.0
+  dart_style: ^2.2.1
+  
+dev_dependencies:
+  lints: ^1.0.0
+  test: ^1.16.0
+
